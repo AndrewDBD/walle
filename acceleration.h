@@ -1,6 +1,6 @@
 
 #include "Arduino.h"
-
+#define SPEEDCONST 10
 
 void acceleration(bool direction, int acc = 1, int speed = 5, int motor1_1 = 0, int motor1_2 = 16, int motor2_1 = 12, int motor2_2 = 15) {
   //туду исправить ошибки
@@ -20,12 +20,12 @@ void acceleration(bool direction, int acc = 1, int speed = 5, int motor1_1 = 0, 
     digitalWrite(motor1_2, direction == false ? HIGH : LOW);
     digitalWrite(motor2_1, direction == false ? LOW : HIGH);
     digitalWrite(motor2_2, direction == false ? HIGH : LOW);
-    delay(4 * i);
+    delay(SPEEDCONST * i);
     digitalWrite(motor1_1, LOW);
     digitalWrite(motor1_2, LOW);
     digitalWrite(motor2_1, LOW);
     digitalWrite(motor2_2, LOW);
-    delay(4 * (10 - i));
+    delay(SPEEDCONST * (10 - i));
   }
   //ниже должны быть вращения
   Serial.println("вращения");
@@ -36,12 +36,12 @@ void acceleration(bool direction, int acc = 1, int speed = 5, int motor1_1 = 0, 
     digitalWrite(motor1_2, direction == false ? HIGH : LOW);
     digitalWrite(motor2_1, direction == false ? HIGH : LOW);
     digitalWrite(motor2_2, direction == false ? LOW : HIGH);
-    delay(4 * i);
+    delay(SPEEDCONST * i);
     digitalWrite(motor1_1, LOW);
     digitalWrite(motor1_2, LOW);
     digitalWrite(motor2_1, LOW);
     digitalWrite(motor2_2, LOW);
-    delay(4 * (10 - i));
+    delay(SPEEDCONST * (10 - i));
   }
   for (int i = speed; 0 <= i && i < 11; i += acc) {
     Serial.printf("i = %d\n", i);
@@ -49,11 +49,11 @@ void acceleration(bool direction, int acc = 1, int speed = 5, int motor1_1 = 0, 
     digitalWrite(motor1_2, direction == false ? LOW : HIGH);
     digitalWrite(motor2_1, direction == false ? LOW : HIGH);
     digitalWrite(motor2_2, direction == false ? HIGH : LOW);
-    delay(4 * i);
+    delay(SPEEDCONST * i);
     digitalWrite(motor1_1, LOW);
     digitalWrite(motor1_2, LOW);
     digitalWrite(motor2_1, LOW);
     digitalWrite(motor2_2, LOW);
-    delay(4 * (10 - i));
+    delay(SPEEDCONST * (10 - i));
   }
 }

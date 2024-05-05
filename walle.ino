@@ -3,10 +3,10 @@
 bool direction = true;
 
 //входы драйвера моторов у валли
-//orange - in2
-//green - in1
-//yellow - in4
-//brown/gray - in3
+//orange - in2 16
+//green - in1 0
+//yellow - in4 15
+//brown/gray - in3 12
 //blue - step
 //in1 + in2 = motor1
 //in3 + in4 = motor2
@@ -41,6 +41,11 @@ void loop() {
   direction = !direction;
   speed = 5;
   acceleration(direction, x, speed);
-  delay(2000);
+  delay(5000);
+  //пауза между движениями
+  speed = 0;
+  acceleration(direction, x, speed);
+  delay(1000);
+
   //нужно реализовать логику торможения
 }
